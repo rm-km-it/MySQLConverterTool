@@ -15,6 +15,7 @@ require_once('Function/FieldName.php');
 require_once('Function/FieldTable.php');
 require_once('Function/FieldType.php');
 require_once('Function/FreeResult.php');
+require_once('Function/Result.php');
 require_once('Function/Generic.php');
 require_once('Function/GenericBoolean.php');
 require_once('Function/ListDBs.php');
@@ -134,7 +135,7 @@ class MySQLConverterTool_Converter {
     */
     protected $mysql_funcs_not_supported = array(
             // rewrite the ugly mysql_result calls manually!
-            'mysql_result'          => true,
+            //'mysql_result'          => true,
             // whatever that function is...
             'mysql_fetch_field2'    => true,    
         );
@@ -303,7 +304,8 @@ class MySQLConverterTool_Converter {
                 'mysql_tablename'           => new MySQLConverterTool_Function_Tablename(),
                 'mysql_table_name'          => new MySQLConverterTool_Function_Tablename(),
                 'mysql_thread_id'           => new MySQLConverterTool_Function_ConnParam('mysqli_thread_id'),
-                'mysql_unbuffered_query'    => new MySQLConverterTool_Function_UnbufferedQuery(),                
+                'mysql_unbuffered_query'    => new MySQLConverterTool_Function_UnbufferedQuery(),
+           		'mysql_result'         		=> new MySQLConverterTool_Function_Result(),
             );
             
     } // end func __construct
