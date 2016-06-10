@@ -23,10 +23,14 @@ class MySQLConverterTool_Function_Result extends MySQLConverterTool_Function_Gen
     
     public function handle(Array $params = array()) {
         
-        if (count($params) != 3)
+        if (count($params) == 2) {
+	        list($res, $row) = $this->extractParamValues($params);
+	        $col = 0;
+        } else if(count($params) == 3) {
+	        list($res, $row, $col) = $this->extractParamValues($params);
+        } else {
             return array(self::PARSE_ERROR_WRONG_PARAMS, NULL);
-            
-        list($res, $row, $col) = $this->extractParamValues($params);
+        }
         
         if($row != 0) {
             return array('Currently the only supported value for $row is 0', NULL);
