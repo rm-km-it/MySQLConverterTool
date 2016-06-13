@@ -41,7 +41,7 @@ class MySQLConverterTool_Function_Generic {
     *
     * @var  string
     */
-    public $ston_name = '$GLOBALS["___mysqli_ston"]';
+    public $ston_name = '$GLOBALS["mysqli_connection"]';
           
 
     //
