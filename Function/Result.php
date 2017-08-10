@@ -32,11 +32,8 @@ class MySQLConverterTool_Function_Result extends MySQLConverterTool_Function_Gen
             return array(self::PARSE_ERROR_WRONG_PARAMS, NULL);
         }
         
-        if($row != 0) {
-            return array('Currently the only supported value for $row is 0', NULL);
-        }
-       
-        return array(NULL, sprintf('mysqli_fetch_array(%s)[%s]', $res, $col));
+
+        return array(NULL, sprintf('call_user_func(function() { mysqli_data_seek(%s, %s); return mysqli_fetch_array(%s)[%s];})',$res, $row, $res, $col));
     }
     
     
